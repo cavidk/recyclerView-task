@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerView_Figma_Task</string>
+    <string name="delete">Delete</string>
+</resources>
