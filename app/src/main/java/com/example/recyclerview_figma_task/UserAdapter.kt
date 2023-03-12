@@ -9,11 +9,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class UserAdapter(private val myContext:Context,var userList: ArrayList<UserInfo>)
+class UserAdapter(private val myContext:Context,private val userClickListener: UserClickListener, var userList: ArrayList<UserInfo>)
     :RecyclerView.Adapter<UserAdapter.UserInfoCatch>() {
-
-
-
     inner class UserInfoCatch(view:View):RecyclerView.ViewHolder(view){
        var userCardInfo : CardView
        var userName : TextView
@@ -50,9 +47,14 @@ class UserAdapter(private val myContext:Context,var userList: ArrayList<UserInfo
         holder.userId.text = user.userId.toString()
 
         holder.userCardInfo.setOnClickListener {
-            removeUser(position)
+          userClickListener.onClickListener(user)
         }
+        holder.userCardInfo.setOnLongClickListener {
 
+            userClickListener.longClickListener(position)
+
+            true
+        }
     }
 
     fun addUser(newUser:UserInfo){
@@ -85,5 +87,10 @@ class UserAdapter(private val myContext:Context,var userList: ArrayList<UserInfo
         notifyItemRemoved(position)
         notifyItemRangeChanged(position,userList.size)
     }
+}
 
+interface UserClickListener{
+    fun onClickListener(userInfo: UserInfo)
+
+    fun longClickListener(position: Int)
 }
