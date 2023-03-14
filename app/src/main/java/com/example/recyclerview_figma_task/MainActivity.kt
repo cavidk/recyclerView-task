@@ -3,13 +3,11 @@ package com.example.recyclerview_figma_task
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview_figma_task.databinding.ActivityMainBinding
 import com.example.recyclerview_figma_task.databinding.AlertUserBinding
-import java.text.FieldPosition
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
